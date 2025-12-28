@@ -42,17 +42,19 @@ const showImageBg = Astro.props.showImageBg ?? false;
     <div class="relative w-full h-full overflow-hidden overflow-y-auto safe-y">
       {
         !showImageBg && (
-          <video
-            autoplay
-            loop
-            muted
-            playsinline
-            poster="/sky.webp"
-            class="fixed inset-0 w-full h-full object-cover -z-10 pointer-events-none"
-          >
-            <source src="/sky.webm" type="video/webm" />
-            <source src="/sky.mp4" type="video/mp4" />
-          </video>
+          <div class="fixed inset-0 z-0 pointer-events-none">
+            <video
+              autoplay
+              loop
+              muted
+              playsinline
+              poster="/sky.webp"
+              class="w-full h-full object-cover"
+            >
+              <source src="/sky.webm" type="video/webm" />
+              <source src="/sky.mp4" type="video/mp4" />
+            </video>
+          </div>
         )
       }
       {
@@ -69,22 +71,18 @@ const showImageBg = Astro.props.showImageBg ?? false;
           <div class="marquee__inner animate-header">
             <span class="marquee__text">{siteLabels.banner}</span>
             <span class="marquee__text" aria-hidden="true">{siteLabels.banner}</span>
-            <span class="marquee__text" aria-hidden="true">{siteLabels.banner}</span>
-            <span class="marquee__text" aria-hidden="true">{siteLabels.banner}</span>
           </div>
         </div>
       </header>
 
-			<main class="relative z-10">
-				<slot />
-			</main>
+      <main class="relative z-10">
+        <slot />
+      </main>
 
       <footer class="fixed bottom-0 left-0 w-full text-white overflow-hidden">
         <div class="marquee marquee--bottom" aria-label={siteLabels.banner}>
           <div class="marquee__inner animate-footer">
             <span class="marquee__text">{siteLabels.banner}</span>
-            <span class="marquee__text" aria-hidden="true">{siteLabels.banner}</span>
-            <span class="marquee__text" aria-hidden="true">{siteLabels.banner}</span>
             <span class="marquee__text" aria-hidden="true">{siteLabels.banner}</span>
           </div>
         </div>
