@@ -1,0 +1,43 @@
+---
+import { siteLabels } from "../model/site-labels";
+
+const size = Astro.props.size ?? 320;
+---
+
+<a href={siteLabels.instagram} class="cursor-pointer">
+  <svg
+    class="logo"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 377.34 377.34"
+    role="img"
+    aria-label="ARGOT"
+    width={size}
+    height={size}
+  >
+    <title>ARGOT</title>
+    <circle cx="188.67" cy="188.67" r="188.67"></circle>
+    <text x="188.67" y="188.65" text-anchor="middle" class="logo-text">
+      ARGOT
+    </text>
+  </svg>
+</a>
+
+<style>
+  .logo {
+    display: block;
+  }
+
+  .logo-text {
+    font-size: 58.73px;
+    fill: #fff;
+    font-family: "Vineta BT", "VinetaBT-Regular", serif;
+    letter-spacing: 0.02em;
+  }
+
+  /* Slight nudge to compensate for font metrics differences across engines */
+  @supports (dominant-baseline: central) {
+    .logo-text {
+      dominant-baseline: central;
+    }
+  }
+</style>

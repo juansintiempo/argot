@@ -1,13 +1,9 @@
 export const siteLabels = {
   instagram: 'https://www.instagram.com/argot.colectivo/',
-  banner: '/// @argot.colectivo /// Buenos Aires, Argentina /// info@argot.com.ar' +
-    '/// @argot.colectivo /// Buenos Aires, Argentina /// info@argot.com.ar' +
-    '/// @argot.colectivo /// Buenos Aires, Argentina /// info@argot.com.ar' +
-    '/// @argot.colectivo /// Buenos Aires, Argentina /// info@argot.com.ar' +
-    '/// @argot.colectivo /// Buenos Aires, Argentina /// info@argot.com.ar' +
-    '/// @argot.colectivo /// Buenos Aires, Argentina /// info@argot.com.ar' +
-    '/// @argot.colectivo /// Buenos Aires, Argentina /// info@argot.com.ar' +
-    '/// @argot.colectivo /// Buenos Aires, Argentina /// info@argot.com.ar',
+  banner: '/// Buenos Aires, Argentina /// info@argot.com.ar ' + 
+    '/// Buenos Aires, Argentina /// info@argot.com.ar ' + 
+    '/// Buenos Aires, Argentina /// info@argot.com.ar ' + 
+    '/// Buenos Aires, Argentina /// info@argot.com.ar ',
   description: {
     intro: `ARGOT es un grupo de investigación interdisciplinar que explora la intersección entre arte, arquitectura y ciencia. ` + 
     `Desde Argentina hacia el mundo, el colectivo inició su investigación en 2019 con el desarrollo de objetos a pequeña escala ` + 

@@ -2,8 +2,8 @@
 import { siteLabels } from "../model/site-labels";
 import "../styles/global.css";
 
-const title = "Argot - Inflables para eventos";
-const description = "Argot ofrece inflables para todo tipo de eventos";
+const title = "ARGOT";
+const description = "ARGOT";
 const url = "https://argot.com.ar";
 const image = `${url}/argot.svg`;
 
@@ -14,7 +14,7 @@ const showImageBg = Astro.props.showImageBg ?? false;
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
@@ -34,14 +34,12 @@ const showImageBg = Astro.props.showImageBg ?? false;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
-    <!-- Fuente Acumin Variable Concept -->
-    <link
-      href="https://db.onlinewebfonts.com/c/066ce24dae3730ed6c648b09efaea93a?family=Acumin+Variable+Concept"
-      rel="stylesheet"
-    />
+    <!-- Fonts are loaded locally via src/styles/global.css (@font-face) -->
+    <link rel="preload" href="/fonts/AcuminPro-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/VinetaBT-Regular.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
-    <div class="relative w-full h-full overflow-hidden overflow-y-auto">
+    <div class="relative w-full h-full overflow-hidden overflow-y-auto safe-y">
       {
         !showImageBg && (
           <video
@@ -49,24 +47,31 @@ const showImageBg = Astro.props.showImageBg ?? false;
             loop
             muted
             playsinline
-            class="fixed top-0 left-0 w-full h-full object-cover -z-10"
+            poster="/sky.webp"
+            class="fixed inset-0 w-full h-full object-cover -z-10 pointer-events-none"
           >
-            <source src="sky.webm" type="video/webm" />
-            <source src="sky.mp4" type="video/mp4" />
+            <source src="/sky.webm" type="video/webm" />
+            <source src="/sky.mp4" type="video/mp4" />
           </video>
         )
       }
       {
         showImageBg && (
           <img
-            src="sky.webp"
-            class="fixed top-0 left-0 min-w-[200%] h-full object-cover moving-bg"
+            src="/sky.webp"
+            alt=""
+            class="fixed inset-0 min-w-[200%] h-full object-cover moving-bg -z-10 pointer-events-none"
           />
         )
       }
       <header class="fixed top-0 left-0 w-full text-white overflow-hidden">
-				<div class="whitespace-nowrap inline-block animate-header leading-10 text-lg font-bold drop-shadow-[0_0_2px_rgba(0,0,0,2)]">
-          <span>{siteLabels.banner}</span>
+        <div class="marquee marquee--top" aria-label={siteLabels.banner}>
+          <div class="marquee__inner animate-header">
+            <span class="marquee__text">{siteLabels.banner}</span>
+            <span class="marquee__text" aria-hidden="true">{siteLabels.banner}</span>
+            <span class="marquee__text" aria-hidden="true">{siteLabels.banner}</span>
+            <span class="marquee__text" aria-hidden="true">{siteLabels.banner}</span>
+          </div>
         </div>
       </header>
 
@@ -75,10 +80,13 @@ const showImageBg = Astro.props.showImageBg ?? false;
 			</main>
 
       <footer class="fixed bottom-0 left-0 w-full text-white overflow-hidden">
-				<div class="whitespace-nowrap inline-block animate-footer leading-10 text-lg font-bold drop-shadow-[0_0_2px_rgba(0,0,0,2)]">
-          <span>{siteLabels.banner}</span>
-					<!-- DISPLAY TRICK -->
-          <span aria-hidden="true">{siteLabels.banner}</span>
+        <div class="marquee marquee--bottom" aria-label={siteLabels.banner}>
+          <div class="marquee__inner animate-footer">
+            <span class="marquee__text">{siteLabels.banner}</span>
+            <span class="marquee__text" aria-hidden="true">{siteLabels.banner}</span>
+            <span class="marquee__text" aria-hidden="true">{siteLabels.banner}</span>
+            <span class="marquee__text" aria-hidden="true">{siteLabels.banner}</span>
+          </div>
         </div>
       </footer>
     </div>
@@ -86,6 +94,28 @@ const showImageBg = Astro.props.showImageBg ?? false;
 </html>
 
 <style>
+
+  .marquee {
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  .marquee__inner {
+    display: inline-flex;
+    gap: 3rem;
+    align-items: center;
+    will-change: transform;
+  }
+
+  .marquee__text {
+    display: inline-block;
+    font-family: "Acumin Pro", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 1.125rem; /* ~text-lg */
+    line-height: 2.5rem; /* ~leading-10 */
+    padding-inline: 1rem;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+  }
 
   .moving-bg {
     animation: moveLeft 90s ease-in-out infinite alternate;

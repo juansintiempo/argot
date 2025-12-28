@@ -1,29 +1,41 @@
 ---
 import { siteLabels } from "../model/site-labels";
+import Logo from "./Logo.astro";
 ---
 
-<section class="h-screen flex items-center justify-center">
-  <a href={siteLabels.instagram} class="cursor-pointer">
-    <img
-      src="argot.svg"
-      alt="Argot Logo"
-      class="w-60 h-60 md:w-80 md:h-80"
-    />
-  </a>
+<section class="full-screen flex items-center justify-center px-6">
+  <div class="logo-wrap" aria-label="ARGOT">
+    <Logo size={320} />
+  </div>
 </section>
 
-<section class="h-screen flex items-center justify-center px-4">
-  <article
-    class="fade-in max-w-3xl text-white
-           px-6 py-8 md:px-10 md:py-12
-           rounded-3xl backdrop-blur-md bg-white/5 ring-1 ring-white/10 shadow-2xl">
-    <p class="prose prose-invert drop-shadow-[0_0_2px_rgba(0,0,0,2)] text-xl md:text-2xl leading-relaxed m-0">
-      {siteLabels.description.intro}
-    </p>
-  </article>
+<section class="full-screen flex items-center justify-center px-4">
+  <div>
+    <article
+      class="fade-in text-white px-6 py-8 
+      md:px-10 md:py-12 rounded-3xl 
+      shadow-2xl max-w-3xl bg-black/15 ring-1 
+      ring-white/15 backdrop-blur-md"
+    >
+      <p
+        class="prose prose-invert drop-shadow-[0_0_2px_rgba(0,0,0,0.8)] text-[1.25rem] md:text-[1.5rem] leading-relaxed m-0"
+      >
+        {siteLabels.description.intro}
+      </p>
+    </article>
+  </div>
 </section>
 
 <style is:global>
+  .logo-wrap {
+    width: min(320px, 70vw);
+  }
+
+  .logo-wrap svg {
+    width: 100%;
+    height: auto;
+  }
+
   /* Fallback para navegadores sin scroll animations */
   .fade-in {
     opacity: 1;
@@ -40,8 +52,12 @@ import { siteLabels } from "../model/site-labels";
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
   }
 </style>
