@@ -1,5 +1,5 @@
 ---
-import { siteLabels } from "../model/site-labels";
+import { siteLabels } from "../model/labels";
 import Logo from "./Logo.astro";
 ---
 
@@ -14,14 +14,16 @@ import Logo from "./Logo.astro";
     <article
       class="fade-in text-white px-6 py-8 
       md:px-10 md:py-12 rounded-3xl 
-      shadow-2xl max-w-3xl bg-black/15 ring-1 
+      shadow-2xl max-w-3xl bg-black/25 ring-1 
       ring-white/15 backdrop-blur-md"
     >
-      <p
-        class="prose prose-invert drop-shadow-[0_0_2px_rgba(0,0,0,0.8)] text-[1.25rem] md:text-[1.5rem] leading-relaxed m-0"
-      >
-        {siteLabels.description.intro}
-      </p>
+      {siteLabels.description.intro.map((paragraph) => (
+        <p
+          class="prose prose-invert drop-shadow-[0_0_2px_rgba(0,0,0,0.8)] text-[1.25rem] md:text-[1.5rem] leading-relaxed mb-2 last:mb-0"
+        >
+          {paragraph}
+        </p>
+      ))}
     </article>
   </div>
 </section>
